@@ -5,7 +5,6 @@ import gym
 import gym_anytrading
 from gym_anytrading.envs import TradingEnv, ForexEnv, StocksEnv, Actions, Positions 
 from gym_anytrading.datasets import FOREX_EURUSD_1H_ASK, STOCKS_GOOGL
-import matplotlib.pyplot as plt
 
 # env = gym.make('forex-v0', frame_bound=(50, 100), window_size=10)
 env = gym.make('stocks-v0', frame_bound=(50, 100), window_size=10)
@@ -29,15 +28,15 @@ model.learn(total_timesteps=50000,  log_interval=500)
 
 ##############################OBSERVATION######################################
 
+import matplotlib.pyplot as plt
+
 observation = env.reset()
-while True:
+done = False
+while not done:
     action, _states = model.predict(observation)
     observation, reward, done, info = env.step(action)
-    # env.render()
-    if done:
-        print("Info:", info)
-        break
 
+print("Info:", info)
 plt.cla()
 env.render_all()
 plt.show()

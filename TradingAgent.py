@@ -17,14 +17,14 @@ import numpy as np
 from stable_baselines.deepq.policies import LnMlpPolicy
 from stable_baselines import DQN
 
+# model = DQN.load("MyRLModel")
+
 model = DQN(LnMlpPolicy, env, verbose=1)
 model.learn(total_timesteps=50000,  log_interval=500)
 
 # model.save("MyRLModel")
 
-# del model # remove to demonstrate saving and loading
-
-# model = DQN.load("MyRLModel")
+# del model # remove the model
 
 ##############################OBSERVATION######################################
 

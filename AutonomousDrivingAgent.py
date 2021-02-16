@@ -20,7 +20,7 @@ model.learn(total_timesteps=100,  log_interval=10)
 
 model.save("MyRLModel")
 
-# del model # remove to demonstrate saving and loading
+# del model # remove the model
 
 ##############################OBSERVATION######################################
 

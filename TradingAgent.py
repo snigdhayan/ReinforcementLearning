@@ -12,18 +12,14 @@ env = gym.make('stocks-v0', frame_bound=(50, 100), window_size=10)
 
 #############################AGENT############################################
 
-import numpy as np
+from stable_baselines3 import DQN
 
-from stable_baselines.deepq.policies import LnMlpPolicy
-from stable_baselines import DQN
+# model = DQN.load("MyTradingAgent") # use an existing model, if available
 
-# model = DQN.load("MyRLModel")
-
-model = DQN(LnMlpPolicy, env, verbose=1)
+model = DQN("MlpPolicy", env, verbose=1)
 model.learn(total_timesteps=50000,  log_interval=500)
 
-# model.save("MyRLModel")
-
+# model.save("MyTradingAgent")
 # del model # remove the model
 
 ##############################OBSERVATION######################################
